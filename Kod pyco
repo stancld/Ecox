@@ -17,11 +17,11 @@ results = rbind(unempl, pop, elec, gdp)
 colnames(results) <- c('ADF', 'PP', 'KPSS')
 latex = xtable(results) #the latex unit roots table
 
-#Formating dataset
-colnames(data) <- data[,1]
+#formation dataset
+rownames(data) <- data[,1]
 data <- data[-1]
 head(data)
-data <- as.data.frame(apply(data, 2, as.numeric))
+data[,] <- as.data.frame(apply(data, 2, as.numeric))
 
 #add logs to the dataset
 logs = apply(data[,c(1,2,3,7)], 2, log)
